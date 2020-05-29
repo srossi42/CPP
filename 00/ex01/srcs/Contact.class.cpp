@@ -1,7 +1,7 @@
 #include <iostream>
 #include "../includes/Contact.class.hpp"
 
-std::string 	fields[11] = {"First name", "Last name", "Nickname", "Login",
+std::string 	fields[11] = {"First name*", "Last name*", "Nickname*", "Login",
                             "Postal address", "Email address", "Phone number",
                             "Birthday date", "Favorite_meal", "Underwear color",
                             "Darkest secret"};
@@ -58,11 +58,21 @@ void 			Contact::displayAttribute(std::string attribute, size_t max, bool col, b
 void 			Contact::set_infos(void) {
 	std::string input;
 	for (size_t i=0; i<11; i++) {
+		input = "";
 		std::cout << fields[i] << ":" << std::endl;
 		std::cout << "> ";
-		std::cin >> input;
+		if (i < 3) {
+			while (input.length() == 0) {
+				std::getline(std::cin >> std::ws, input);
+			}
+		}
+		else {
+			std::getline(std::cin, input);
+		}
+		
 		set_contact_info(i, input);
 	}
+	return;
 }
 
 std::string     Contact::get_firstname(void) const{

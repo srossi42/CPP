@@ -75,7 +75,8 @@ void Phonebook::searchContact(void){
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "Sorry, this contact does not exist." << std::endl;
-        std::cout << "Which contact would like to see? Please enter a valid index: "; 
+        std::cout << "Which contact would like to see? Please enter a valid index: " << std::endl; 
+        std::cout << "> ";
     }
 	Contact *selected_contact = Phonebook::getContact((size_t)index);
 	selected_contact->display();
